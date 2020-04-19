@@ -2,20 +2,37 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Models\User;
+use Closure;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\UnauthorizedException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Authenticate extends Middleware
 {
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
-     */
-    protected function redirectTo($request)
+    public function handle($request, Closure $next, ...$guards)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        $api_token = $request->input('api_token');
+        if (!$api_token) {
+            return response()->json([
+                "code"=>-1,
+                "msg"=>"缺少token",
+                "data"=>""
+            ],200);
         }
+
+        //查找用户
+        $user = User::where('api_token', $api_token)->first();
+        if (!$user) {
+            return response()->json([
+                "code"=>-1,
+                "msg"=>"未登录",
+                "data"=>""
+            ],200);
+        }
+
+        return $next($request);
     }
 }

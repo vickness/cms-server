@@ -1,0 +1,143 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# 在项目中新建文件 http-client.env.json，配置不同环境的变量
+
+### 登录Post
+POST {{host}}/api/user/login
+Content-Type: application/x-www-form-urlencoded
+
+userName=vick002&passWord=111111
+
+### 注册Post
+POST {{host}}/api/user/register
+Content-Type: application/x-www-form-urlencoded
+
+userName=ugg7483&passWord=111111
+
+
+
+### 用户信息
+POST {{host}}/api/user/info
+Content-Type: application/x-www-form-urlencoded
+
+api_token=vBqwWx1k1TTdDCIwqQPJq84mY17tyY5jiEPGGCisKlJaK5775eRMm8S8ppW8&uid=1
+
+### 用户列表
+POST {{host}}/api/user/list
+Content-Type: application/x-www-form-urlencoded
+
+### 用户文章
+POST {{host}}/api/post/select
+Content-Type: application/x-www-form-urlencoded
+
+api_token=nFeHaROm8YMnB53bhaUJlI0MskTfDd3fMwswH7aOT5wmSATbAH6iOHFLS6Fs&uid=2
+
+### 修改头像
+POST {{host}}/api/system/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="file.jpg"
+
+< /Users/vick/Downloads/test.jpg
+
+
+
+### 增加帖子
+POST {{host}}/api/post/insert
+Content-Type: application/x-www-form-urlencoded
+
+title=文章标题1232123&content=文章内容2222&api_token=nFeHaROm8YMnB53bhaUJlI0MskTfDd3fMwswH7aOT5wmSATbAH6iOHFLS6Fs&uid=2&cid=4
+
+### 修改帖子
+POST {{host}}/api/post/update
+Content-Type: application/x-www-form-urlencoded
+
+api_token=7gqa7iPL8t9CxRpIrvC2btHUg2lJfS8edDPb2z2m1TvXisIgvWZjQd1cJMbK&uid=2
+
+### 删除帖子
+POST {{host}}/api/post/delete
+Content-Type: application/x-www-form-urlencoded
+
+api_token=7gqa7iPL8t9CxRpIrvC2btHUg2lJfS8edDPb2z2m1TvXisIgvWZjQd1cJMbK&pid=12
+
+### 查询帖子
+POST {{host}}/api/post/list
+Content-Type: application/x-www-form-urlencoded
+
+page=2
+
+### 添加置顶
+POST {{host}}/api/post/addTop
+Content-Type: application/x-www-form-urlencoded
+
+pid=2
+
+### 取消置顶
+POST {{host}}/api/post/deleteTop
+Content-Type: application/x-www-form-urlencoded
+
+pid=1
+
+### 查询置顶
+POST {{host}}/api/post/top
+Content-Type: application/x-www-form-urlencoded
+
+
+
+### 添加类型
+POST {{host}}/api/cate/insert
+Content-Type: application/x-www-form-urlencoded
+
+name=财经
+
+### 删除类型
+POST {{host}}/api/cate/delete
+Content-Type: application/x-www-form-urlencoded
+
+cid=1
+
+### 查询类型
+POST {{host}}/api/cate/select
+Content-Type: application/x-www-form-urlencoded
+
+
+
+### 添加评论
+POST {{host}}/api/comment/insert
+Content-Type: application/x-www-form-urlencoded
+
+api_token=nFeHaROm8YMnB53bhaUJlI0MskTfDd3fMwswH7aOT5wmSATbAH6iOHFLS6Fs&uid=2&pid=1&content=啊啊啊啊啊啊啊
+
+### 删除评论
+POST {{host}}/api/comment/delete
+Content-Type: application/x-www-form-urlencoded
+
+mid=2
+
+### 查询评论
+POST {{host}}/api/comment/list
+Content-Type: application/x-www-form-urlencoded
+
+pid=1
+
+
+
+### 添加回复
+POST {{host}}/api/comment/reply
+Content-Type: application/x-www-form-urlencoded
+
+api_token=nFeHaROm8YMnB53bhaUJlI0MskTfDd3fMwswH7aOT5wmSATbAH6iOHFLS6Fs&uid=1&mid=3&content=4444444
+
+### 查看回复
+POST {{host}}/api/comment/replies
+Content-Type: application/x-www-form-urlencoded
+
+mid=3
+
+###
